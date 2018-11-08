@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
+using GithubWebhook;
+using GithubWebhook.Events;
+using Kelson.Common.Async;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -34,49 +37,45 @@ namespace Server
                     .MapRoute("/build/", HandleBuildHook)
                     .Build());
 
-            PrintRequestMessages()
-                .ContinueWith(t =>
-                {
-                    if (t.IsFaulted)
-                        throw t.Exception;
-                });
+            Message.PrintRequestMessages()
+                   .Confirm(errorCallback: e => throw e);
         }
 
         public class Message
         {
-            public ConsoleColor[] Colors { get; set; }
-            public string[] Text { get; set; }
-        }
+            public (ConsoleColor color, string text)[] Lines { get; set; }
 
-        private readonly ConcurrentQueue<Message> messages = new ConcurrentQueue<Message>();
+            private static readonly ConcurrentQueue<Message> messages = new ConcurrentQueue<Message>();
 
-        public async Task PrintRequestMessages()
-        {
-            while (true)
+            public static async Task PrintRequestMessages()
             {
-                if (messages.TryDequeue(out Message message))
+                while (true)
                 {
-                    var foreground = Console.ForegroundColor;
-                    foreach (var tc in message.Text.Zip(message.Colors, (t, c) => (t, c)))
+                    if (messages.TryDequeue(out Message message))
                     {
-                        Console.ForegroundColor = tc.c;
-                        Console.WriteLine();
-                        Console.WriteLine(tc.t);
+                        var foreground = Console.ForegroundColor;
+                        foreach (var tc in message.Lines)
+                        {
+                            Console.ForegroundColor = tc.color;
+                            Console.WriteLine();
+                            Console.WriteLine(tc.text);
+                        }
+                        Console.ForegroundColor = foreground;
                     }
-                    Console.ForegroundColor = foreground;
+                    else
+                        await Task.Delay(500);
                 }
-                else
-                    await Task.Delay(500);
+            }
+
+            public static void Push(params (ConsoleColor color, string text)[] lines)
+            {
+                messages.Enqueue(new Message { Lines = lines });
             }
         }
 
         public async Task HandleTestHook(HttpContext context)
         {
-            messages.Enqueue(new Message
-            {
-                Colors = new ConsoleColor[] { ConsoleColor.Yellow, ConsoleColor.White },
-                Text = new string[] { "Test", DateTime.Now.ToShortTimeString() },
-            });
+            Message.Push((ConsoleColor.Yellow, "/test"), (ConsoleColor.White, DateTime.Now.ToLongTimeString()));
 
             context.Response.StatusCode = StatusCodes.Status200OK;
             context.Response.ContentType = "text/plain";
@@ -85,19 +84,58 @@ namespace Server
 
         public async Task HandleBuildHook(HttpContext context)
         {
-            string json = null;
-            using (var reader = new StreamReader(context.Request.Body))
-                json = await reader.ReadToEndAsync();
+            var hook = new GhWebhook(context.Request);
 
-            messages.Enqueue(new Message
-            {
-                Colors = new ConsoleColor[] { ConsoleColor.Green, ConsoleColor.White, ConsoleColor.White },
-                Text = new string[] { context.Request.Path, DateTime.Now.ToShortTimeString(), json },
-            });
+            Message.Push((ConsoleColor.Green, "/build"), (ConsoleColor.White, DateTime.Now.ToLongTimeString()), (ConsoleColor.White, hook.PayloadText));
+
+            if (hook.PayloadObject is PushEvent push && push.Ref == "refs/heads/master")
+                CloneBuildDeploy(push).Confirm(errorCallback: e => Message.Push((ConsoleColor.Red, "Deployment Error"), (ConsoleColor.White, e.Message)));
 
             context.Response.StatusCode = StatusCodes.Status200OK;
             context.Response.ContentType = "text/plain";
             await context.Response.WriteAsync("Request received");
+        }
+
+        public static async Task CloneBuildDeploy(PushEvent push)
+        {
+            string directory = push.Repository.FullName;
+
+
+            if (Directory.Exists(directory))
+                DeleteRepoDirectory(directory);
+            Directory.CreateDirectory(directory);
+
+            var process = Process.Start(new ProcessStartInfo
+            {
+                FileName = "git",
+                Arguments = $"clone {push.Repository.Url}",
+                WorkingDirectory = directory
+            });
+
+            process.WaitForExit();
+
+            if (process.ExitCode != 0)
+            {
+                if (Directory.Exists(directory))
+                    DeleteRepoDirectory(directory);
+                Message.Push((ConsoleColor.Red, "Git Error"), (ConsoleColor.White, await process.StandardError.ReadToEndAsync()));
+
+                throw new Exception("Git clone encountered an error");
+            }
+
+            process = Process.Start(new ProcessStartInfo
+            {
+
+            });
+        }
+
+        public static void DeleteRepoDirectory(string directory)
+        {
+            foreach (var subdir in Directory.EnumerateDirectories(directory))
+                DeleteRepoDirectory(subdir);
+            foreach (var file in Directory.EnumerateFiles(directory))
+                File.Delete(file);
+            Directory.Delete(directory, true);
         }
     }
 }
