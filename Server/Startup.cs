@@ -72,11 +72,17 @@ namespace Server
         }
 
         public async Task HandleTestHook(HttpContext context)
-            => messages.Enqueue(new Message
+        {
+            messages.Enqueue(new Message
             {
                 Colors = new ConsoleColor[] { ConsoleColor.Yellow, ConsoleColor.White },
                 Text = new string[] { "Test", DateTime.Now.ToShortTimeString() },
             });
+
+            context.Response.StatusCode = StatusCodes.Status200OK;
+            context.Response.ContentType = "text/plain";
+            await context.Response.WriteAsync("Request received");
+        }
 
         public async Task HandleBuildHook(HttpContext context)
         {
@@ -90,6 +96,9 @@ namespace Server
                 Text = new string[] { context.Request.Path, DateTime.Now.ToShortTimeString(), json },
             });
 
+            context.Response.StatusCode = StatusCodes.Status200OK;
+            context.Response.ContentType = "text/plain";
+            await context.Response.WriteAsync("Request received");
         }
     }
 }
