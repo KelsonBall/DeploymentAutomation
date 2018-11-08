@@ -1,0 +1,193 @@
+{
+    "ref": "refs/heads/master",
+    "before": "e7fcdc9a993c9cefc5ea10e3a058d23e8755824d",
+    "after": "b9b776c09796967026030c0ce97c4db71fe9e6bd",
+    "created": false,
+    "deleted": false,
+    "forced": false,
+    "base_ref": null,
+    "compare": "https://github.com/KelsonBall/DeploymentAutomation/compare/e7fcdc9a993c...b9b776c09796",
+    "commits": [
+      {
+        "id": "b9b776c09796967026030c0ce97c4db71fe9e6bd",
+        "tree_id": "967d25988acd50a660e11eba9f7284758240a821",
+        "distinct": true,
+        "message": ".",
+        "timestamp": "2018-11-08T08:21:25-08:00",
+        "url": "https://github.com/KelsonBall/DeploymentAutomation/commit/b9b776c09796967026030c0ce97c4db71fe9e6bd",
+        "author": {
+          "name": "Kelson Ball",
+          "email": "kelson.j.ball@gmail.com",
+          "username": "KelsonBall"
+        },
+        "committer": {
+          "name": "Kelson Ball",
+          "email": "kelson.j.ball@gmail.com",
+          "username": "KelsonBall"
+        },
+        "added": [
+  
+        ],
+        "removed": [
+  
+        ],
+        "modified": [
+          "README.md"
+        ]
+      }
+    ],
+    "head_commit": {
+      "id": "b9b776c09796967026030c0ce97c4db71fe9e6bd",
+      "tree_id": "967d25988acd50a660e11eba9f7284758240a821",
+      "distinct": true,
+      "message": ".",
+      "timestamp": "2018-11-08T08:21:25-08:00",
+      "url": "https://github.com/KelsonBall/DeploymentAutomation/commit/b9b776c09796967026030c0ce97c4db71fe9e6bd",
+      "author": {
+        "name": "Kelson Ball",
+        "email": "kelson.j.ball@gmail.com",
+        "username": "KelsonBall"
+      },
+      "committer": {
+        "name": "Kelson Ball",
+        "email": "kelson.j.ball@gmail.com",
+        "username": "KelsonBall"
+      },
+      "added": [
+  
+      ],
+      "removed": [
+  
+      ],
+      "modified": [
+        "README.md"
+      ]
+    },
+    "repository": {
+      "id": 156726591,
+      "node_id": "MDEwOlJlcG9zaXRvcnkxNTY3MjY1OTE=",
+      "name": "DeploymentAutomation",
+      "full_name": "KelsonBall/DeploymentAutomation",
+      "private": false,
+      "owner": {
+        "name": "KelsonBall",
+        "email": "kelson.j.ball@gmail.com",
+        "login": "KelsonBall",
+        "id": 7193540,
+        "node_id": "MDQ6VXNlcjcxOTM1NDA=",
+        "avatar_url": "https://avatars3.githubusercontent.com/u/7193540?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/KelsonBall",
+        "html_url": "https://github.com/KelsonBall",
+        "followers_url": "https://api.github.com/users/KelsonBall/followers",
+        "following_url": "https://api.github.com/users/KelsonBall/following{/other_user}",
+        "gists_url": "https://api.github.com/users/KelsonBall/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/KelsonBall/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/KelsonBall/subscriptions",
+        "organizations_url": "https://api.github.com/users/KelsonBall/orgs",
+        "repos_url": "https://api.github.com/users/KelsonBall/repos",
+        "events_url": "https://api.github.com/users/KelsonBall/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/KelsonBall/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/KelsonBall/DeploymentAutomation",
+      "description": "Setting up build and deployment automation with Digital Ocean and Web Hooks",
+      "fork": false,
+      "url": "https://github.com/KelsonBall/DeploymentAutomation",
+      "forks_url": "https://api.github.com/repos/KelsonBall/DeploymentAutomation/forks",
+      "keys_url": "https://api.github.com/repos/KelsonBall/DeploymentAutomation/keys{/key_id}",
+      "collaborators_url": "https://api.github.com/repos/KelsonBall/DeploymentAutomation/collaborators{/collaborator}",
+      "teams_url": "https://api.github.com/repos/KelsonBall/DeploymentAutomation/teams",
+      "hooks_url": "https://api.github.com/repos/KelsonBall/DeploymentAutomation/hooks",
+      "issue_events_url": "https://api.github.com/repos/KelsonBall/DeploymentAutomation/issues/events{/number}",
+      "events_url": "https://api.github.com/repos/KelsonBall/DeploymentAutomation/events",
+      "assignees_url": "https://api.github.com/repos/KelsonBall/DeploymentAutomation/assignees{/user}",
+      "branches_url": "https://api.github.com/repos/KelsonBall/DeploymentAutomation/branches{/branch}",
+      "tags_url": "https://api.github.com/repos/KelsonBall/DeploymentAutomation/tags",
+      "blobs_url": "https://api.github.com/repos/KelsonBall/DeploymentAutomation/git/blobs{/sha}",
+      "git_tags_url": "https://api.github.com/repos/KelsonBall/DeploymentAutomation/git/tags{/sha}",
+      "git_refs_url": "https://api.github.com/repos/KelsonBall/DeploymentAutomation/git/refs{/sha}",
+      "trees_url": "https://api.github.com/repos/KelsonBall/DeploymentAutomation/git/trees{/sha}",
+      "statuses_url": "https://api.github.com/repos/KelsonBall/DeploymentAutomation/statuses/{sha}",
+      "languages_url": "https://api.github.com/repos/KelsonBall/DeploymentAutomation/languages",
+      "stargazers_url": "https://api.github.com/repos/KelsonBall/DeploymentAutomation/stargazers",
+      "contributors_url": "https://api.github.com/repos/KelsonBall/DeploymentAutomation/contributors",
+      "subscribers_url": "https://api.github.com/repos/KelsonBall/DeploymentAutomation/subscribers",
+      "subscription_url": "https://api.github.com/repos/KelsonBall/DeploymentAutomation/subscription",
+      "commits_url": "https://api.github.com/repos/KelsonBall/DeploymentAutomation/commits{/sha}",
+      "git_commits_url": "https://api.github.com/repos/KelsonBall/DeploymentAutomation/git/commits{/sha}",
+      "comments_url": "https://api.github.com/repos/KelsonBall/DeploymentAutomation/comments{/number}",
+      "issue_comment_url": "https://api.github.com/repos/KelsonBall/DeploymentAutomation/issues/comments{/number}",
+      "contents_url": "https://api.github.com/repos/KelsonBall/DeploymentAutomation/contents/{+path}",
+      "compare_url": "https://api.github.com/repos/KelsonBall/DeploymentAutomation/compare/{base}...{head}",
+      "merges_url": "https://api.github.com/repos/KelsonBall/DeploymentAutomation/merges",
+      "archive_url": "https://api.github.com/repos/KelsonBall/DeploymentAutomation/{archive_format}{/ref}",
+      "downloads_url": "https://api.github.com/repos/KelsonBall/DeploymentAutomation/downloads",
+      "issues_url": "https://api.github.com/repos/KelsonBall/DeploymentAutomation/issues{/number}",
+      "pulls_url": "https://api.github.com/repos/KelsonBall/DeploymentAutomation/pulls{/number}",
+      "milestones_url": "https://api.github.com/repos/KelsonBall/DeploymentAutomation/milestones{/number}",
+      "notifications_url": "https://api.github.com/repos/KelsonBall/DeploymentAutomation/notifications{?since,all,participating}",
+      "labels_url": "https://api.github.com/repos/KelsonBall/DeploymentAutomation/labels{/name}",
+      "releases_url": "https://api.github.com/repos/KelsonBall/DeploymentAutomation/releases{/id}",
+      "deployments_url": "https://api.github.com/repos/KelsonBall/DeploymentAutomation/deployments",
+      "created_at": 1541690454,
+      "updated_at": "2018-11-08T16:18:36Z",
+      "pushed_at": 1541694090,
+      "git_url": "git://github.com/KelsonBall/DeploymentAutomation.git",
+      "ssh_url": "git@github.com:KelsonBall/DeploymentAutomation.git",
+      "clone_url": "https://github.com/KelsonBall/DeploymentAutomation.git",
+      "svn_url": "https://github.com/KelsonBall/DeploymentAutomation",
+      "homepage": null,
+      "size": 7,
+      "stargazers_count": 0,
+      "watchers_count": 0,
+      "language": "C#",
+      "has_issues": true,
+      "has_projects": true,
+      "has_downloads": true,
+      "has_wiki": true,
+      "has_pages": false,
+      "forks_count": 0,
+      "mirror_url": null,
+      "archived": false,
+      "open_issues_count": 0,
+      "license": {
+        "key": "mit",
+        "name": "MIT License",
+        "spdx_id": "MIT",
+        "url": "https://api.github.com/licenses/mit",
+        "node_id": "MDc6TGljZW5zZTEz"
+      },
+      "forks": 0,
+      "open_issues": 0,
+      "watchers": 0,
+      "default_branch": "master",
+      "stargazers": 0,
+      "master_branch": "master"
+    },
+    "pusher": {
+      "name": "KelsonBall",
+      "email": "kelson.j.ball@gmail.com"
+    },
+    "sender": {
+      "login": "KelsonBall",
+      "id": 7193540,
+      "node_id": "MDQ6VXNlcjcxOTM1NDA=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/7193540?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/KelsonBall",
+      "html_url": "https://github.com/KelsonBall",
+      "followers_url": "https://api.github.com/users/KelsonBall/followers",
+      "following_url": "https://api.github.com/users/KelsonBall/following{/other_user}",
+      "gists_url": "https://api.github.com/users/KelsonBall/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/KelsonBall/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/KelsonBall/subscriptions",
+      "organizations_url": "https://api.github.com/users/KelsonBall/orgs",
+      "repos_url": "https://api.github.com/users/KelsonBall/repos",
+      "events_url": "https://api.github.com/users/KelsonBall/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/KelsonBall/received_events",
+      "type": "User",
+      "site_admin": false
+    }
+  }
